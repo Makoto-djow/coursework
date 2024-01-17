@@ -1,4 +1,5 @@
 from src.sorting_functions import sorted_date
+from datetime import datetime
 
 
 def date_operation():
@@ -10,9 +11,9 @@ def date_operation():
     list_date = []
     operations = sorted_date()
 
-    for operation in operations:
-        year, month, day = (operation['date'][:10]).split('-')
-        list_date.append(f'{day}.{month}.{year}')
+    for op in operations:
+        operation_date = datetime.fromisoformat(op['date'])
+        list_date.append(operation_date.strftime('%d.%m.%Y'))
 
     return list_date
 

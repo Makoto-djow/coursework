@@ -9,9 +9,8 @@ def sorted_executed():
     executed_list = []
     operations = open_json_file()
     for operation in operations:
-        if 'state' in operation:
-            if operation["state"] == "EXECUTED":
-                executed_list.append(operation)
+        if operation.get('state') == 'EXECUTED':
+            executed_list.append(operation)
 
     return executed_list
 
@@ -25,5 +24,3 @@ def sorted_date():
     date_sorted_list = sorted(date_list, key=lambda x: x["date"])
 
     return date_sorted_list[-1:-6:-1]
-
-# print(*sorted_date(), sep='\n\n')
